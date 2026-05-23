@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title or "TOTP Demo" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="nav">
+          <a href="/register">Register</a>
+          <a href="/login">Login</a>
+          <a href="/dashboard">Dashboard</a>
+          <a href="/totp-setup">TOTP Setup</a>
+        </div>
+      </header>
+      <hr />
+      {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>

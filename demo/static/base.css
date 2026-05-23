@@ -1,0 +1,7 @@
+body { font-family: "Georgia", "Times New Roman", serif; margin: 2rem; background: #f5f2ea; color: #1a1a1a; }
+.container { max-width: 560px; margin: 0 auto; background: #fff; padding: 2rem; border: 1px solid #e3dccf; }
+.nav a { margin-right: 1rem; }
+.error { color: #8a1d1d; }
+label { display: block; margin-top: 1rem; }
+input { width: 100%; padding: 0.5rem; margin-top: 0.25rem; }
+button { margin-top: 1rem; padding: 0.6rem 1.2rem; }
