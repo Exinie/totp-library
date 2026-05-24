@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --brand-color: #652D90;
+    --page-bg: #E4E5F1;
+    --card-border: #d5cde6;
+}
+
+body {
+    background-color: var(--page-bg);
+    font-family: 'Lexend', Arial, sans-serif;
+    min-height: 100vh; /* Footer'in en asagida olmasi icin */
+    display: flex; /* Footer'in en asagida olmasi icin */
+    flex-direction: column; /* Footer'in en asagida olmasi icin */
+}
+
+header {
+    display: flex;
+    flex-direction: column; /* Alt alta */
+    align-items: center; /* Yatay ortala */
+    justify-content: center; /* Dikey ortala */
+    background-color: var(--brand-color);
+    color: white;
+    height: auto;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+    margin: 0 15px;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 16px 0;
+    text-align: center;
+    background-color: var(--brand-color);
+    color: white;
+    margin-top: auto; /* Footer'in en asagida olmasi icin */
+}
+
+footer small {
+    display: block;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.message {
+    margin-top: 1%;
+    display: flex;
+    justify-content: center;
+}
+
+.message ul {
+    list-style-type: none;
+}

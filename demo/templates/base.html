@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOTP Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <h1>TOTP Demo</h1>
+        <nav>
+            {% if session.get('user_id') %}
+                <a href="{{ url_for('dashboard.index') }}">Dashboard</a>
+                <a href="{{ url_for('dashboard.options') }}">Kullanıcı Ayarları</a>
+                <a href="{{ url_for('auth.logout') }}">Çıkış Yap</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}">Giriş Yap</a>
+                <a href="{{ url_for('auth.register') }}">Kayıt Ol</a>
+            {% endif %}
+        </nav>
+    </header>
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="message">
+                <ul>
+                {% for message in messages %}
+                    <li style="color: red;">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <small>BGT 292 Bilişim Güvenliği Teknolojisi Yönlendirilmiş Çalışma - BGT 2. Sınıf 202407105086 Erdem Ural</small>
+    </footer>
+</body>
+</html>

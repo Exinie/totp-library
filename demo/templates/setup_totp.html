@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='user.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="user-container">
+    <div class="user-card">
+        <h2>İki Adımlı Doğrulama Kurulumu</h2>
+        
+        <p>Aşağıdaki QR kodu tarayarak veya anahtarı elle yazarak Kimlik Doğrulayıcı uygulamanıza kayıt edin</p>
+        <div class="qr-box">
+            <img src="data:image/png;base64,{{ qr_base64 }}" alt="TOTP QR Kodu" style="max-width: 100%; height: auto; margin-bottom: 10px; width: 250px;">
+            <br>
+            <strong>{{ secret }}</strong>
+        </div>
+
+        <h3>Yedek Kodlarınız</h3>
+        <p style="color: red; font-size: 0.9rem;">Yedek kodlarınızı güvenli bir yerde saklayın. Her kod tek kullanımlıktır</p>
+        <ul class="code-list">
+            {% for code in backup_codes %}
+                <li>{{ code }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Kurulumu Tamamla</h3>
+        <p>Uygulamada gözüken 6 haneli kodu girerek onaylayın</p>
+        <form method="POST">
+            <div class="input-group">
+                <input type="text" name="code" placeholder="6 Haneli Kod" autocomplete="off" required>
+            </div>
+            
+            <button type="submit" class="submit-btn" style="margin-top: 0;">Doğrula ve Tamamla</button>
+        </form>
+        
+        <a href="{{ url_for('dashboard.options') }}" class="cancel-link">İptal Et</a>
+    </div>
+</div>
+{% endblock %}

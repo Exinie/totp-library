@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>İki Adımlı Doğrulama</h2>
+        <p style="text-align: center; margin-bottom: 25px; color: dimgrey; line-height: 1.5; font-size: 0.95rem;">
+            Devam etmek için Kimlik Doğrulayıcı uygulamasındaki 6 haneli kodu veya yedek kodlarınızdan birini girin
+        </p>
+        
+        <form method="POST">
+            <div class="input-group">
+                <label>Güvenlik Kodu (veya Yedek Kod)</label>
+                <input type="text" name="code" autocomplete="off" required>
+            </div>
+            <button type="submit" class="submit-btn">Doğrula ve Giriş Yap</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

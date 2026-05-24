@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='user.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="user-container">
+    <div class="user-card">
+        <h2>Kullanıcı Ayarları</h2>
+        
+        <h3>İki Adımlı Doğrulama</h3>
+        
+        <div class="status-box">
+            {% if user[4] %}
+                <span style="color: green;">Aktif</span>
+            {% else %}
+                <span style="color: red;">Devre Dışı</span>
+            {% endif %}
+        </div>
+
+        {% if user[4] %}
+            {% if yedek_kodlar %}
+                <p><strong>Geçerli Yedek Kodlarınız</strong></p>
+                <ul class="code-list">
+                {% for kod in yedek_kodlar %}
+                    <li>{{ kod }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <div class="status-box" style="border-color: red; background-color: white;">
+                    <span style="color: red;">Geçerli yedek kodunuz kalmadı!</span>
+                </div>
+            {% endif %}
+
+            <form action="{{ url_for('dashboard.disable_totp') }}" method="POST" onsubmit="return confirm('İki adımlı doğrulamayı devre dışı bırakmak istediğinizden emin misiniz?');">
+                <button type="submit" class="submit-btn" style="background-color: red;">Devre Dışı Bırak</button>
+            </form>
+        {% else %}
+            <form action="{{ url_for('dashboard.setup_totp') }}" method="GET">
+                <button type="submit" class="submit-btn">Kuruluma Başla</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

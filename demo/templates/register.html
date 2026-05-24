@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Kayıt Ol</h2>
+        <form method="POST">
+            <div class="input-group">
+                <label>Kullanıcı Adı</label>
+                <input type="text" name="username" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Parola</label>
+                <input type="password" name="password" required>
+            </div>
+            
+            <button type="submit" class="submit-btn">Kayıt Ol</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
